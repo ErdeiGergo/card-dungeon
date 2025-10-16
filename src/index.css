@@ -3,3 +3,30 @@
   margin: 0;
   padding: 0;
 }
+
+.card{
+  border: 1px solid black;
+  border-radius: 2em;
+  padding: 2em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+  >h1{
+    font-size: 3em;
+  }
+  >h2{
+    font-size: 5em;
+  }
+}
+
+.cardList{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  padding: 2em;
+}

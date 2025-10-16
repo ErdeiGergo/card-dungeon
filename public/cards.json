@@ -3,70 +3,70 @@
         "enemyName": "mouse",
         "enemyIcon": "🐁",
         "level": 2,
-        "revard": "❤",
-        "penalty": "❤"
+        "reward": "❤️",
+        "penalty": "❤️"
     },
     {
         "enemyName": "mouse",
         "enemyIcon": "🐁",
         "level": 2,
-        "revard": "❤",
-        "penalty": "❤"
+        "reward": "❤️",
+        "penalty": "❤️"
     },
     {
         "enemyName": "mouse",
         "enemyIcon": "🐁",
         "level": 2,
-        "revard": "❤",
-        "penalty": "❤"
+        "reward": "❤️",
+        "penalty": "❤️"
     },
     {
         "enemyName": "wolf",
         "enemyIcon": "🐺",
         "level": 3,
-        "revard": "❤",
-        "penalty": "❤❤"
+        "reward": "❤️",
+        "penalty": "❤️❤️"
     },
     {
         "enemyName": "octopus",
         "enemyIcon": "🐙",
         "level": 4,
-        "revard": "⚔",
-        "penalty": "❤"
+        "reward": "⚔️",
+        "penalty": "❤️"
     },
     {
         "enemyName": "snake",
         "enemyIcon": "🐍",
         "level": 5,
-        "revard": "⚔",
-        "penalty": "⚔"
+        "reward": "⚔️",
+        "penalty": "⚔️"
     },
     {
         "enemyName": "snake",
         "enemyIcon": "🐍",
         "level": 5,
-        "revard": "⚔",
-        "penalty": "⚔"
+        "reward": "⚔️",
+        "penalty": "⚔️"
     },
     {
         "enemyName": "ghost",
         "enemyIcon": "👻",
         "level": 6,
-        "revard": "⚔",
-        "penalty": "❤❤"
+        "reward": "⚔️",
+        "penalty": "❤️❤️"
     },
     {
         "enemyName": "alien",
         "enemyIcon": "👽",
         "level": 9,
-        "revard": "⚔",
-        "penalty": "❤❤⚔"
+        "reward": "⚔️",
+        "penalty": "❤️❤️⚔️"
     },
     {
         "enemyName": "dragon",
         "enemyIcon": "🐉",
         "level": 11,
-        "revard": "🥇",
-        "penalty": "❤❤❤❤"
+        "reward": "🥇",
+        "penalty": "❤️❤️❤️❤️"
     }
 ]
