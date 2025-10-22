@@ -12,10 +12,6 @@ const Card = (props: Enemy) => {
         <h5>Reward: {props.reward}</h5>
         <h5>Penalty: {props.penalty}</h5>
       </div>
-
-      <button className='fightBtn'>
-        Fight⚔️
-      </button>
     </div>
   )
 }

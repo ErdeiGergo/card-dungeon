@@ -24,18 +24,25 @@ const App = () => {
   const [fleeList, setFleeList] = useState<Enemy[]>([])
 
   const [health, setHealth] = useState<String>("❤️❤️❤️❤️❤️")
-  const [strength, setStrength] = useState<number>(1)
+  const [strength, setStrength] = useState<String>("⚔️⚔️")
 
   const [currentCard, setCurrentCard] = useState<Enemy>(cards[0])
   
   useEffect(() => {
+    console.log("fetch")
     getCards().then(data => 
     setCards(data)
     )
   }, [])
 
+  useEffect(() => {
+    console.log("pick")
+    if (cards.length != 0 && !currentCard)
+      pick()
+  }, [cards])
+
   const pick = () => {
-    if(!cards || currentCard) return
+    if(!cards) return
     const random = Math.floor(Math.random() * cards.length)
     const card = cards[random]
     setCurrentCard(card)
@@ -48,19 +55,76 @@ const App = () => {
 
   const fight = () => {
     if(!currentCard)return
-    const damage = Math.floor(Math.random() * 6) + 1 + strength
-    alert(damage)
+    const damage = Math.floor(Math.random() * 6) + 1 + strength.length / 2
+
+    alert("damage: " + damage)
     if (damage > currentCard?.level)
-      alert("Nyertél")
+    {
+      let sziv = currentCard.reward.replaceAll("⚔️", "").length / 2
+      let newHealth = health
+      for (let i = 0; i < sziv; i++) 
+      {
+        newHealth = health.replace("💀", "❤️")
+      }
+
+      let kard = currentCard.reward.replaceAll("❤️", "").length / 2
+      let newStrength = strength
+      for (let i = 0; i < kard; i++) 
+      {
+        newStrength += "⚔️"
+      }
+
+      setHealth(newHealth)
+      setStrength(newStrength)
+      let medal = currentCard.reward.replaceAll("⚔️", "").replaceAll("❤️", "").length
+      if (medal != 0)
+        alert("NYERTÉL BAZ+")
+      pick()
+    }
     else
+    {
       alert("Vesztettél")
+
+      let sziv = currentCard.penalty.replaceAll("⚔️", "").length / 2
+      let ujHealth = health
+      for (let i = 0; i < sziv; i++) 
+      {
+        //alert("Penalty szivek: " + sziv)
+        ujHealth = ujHealth.replace("❤️", "💀")
+      }
+
+      let kard = currentCard.reward.replaceAll("❤️", "").length / 2
+      let ujKard = strength
+      for (let i = 0; i < kard; i++) 
+        {
+          //alert("Penalty cardok? " + kard)
+          ujKard = ujKard.replace("⚔️", "")
+        }
+        
+      setHealth(ujHealth)
+      if(health.replaceAll("💀", "").length / 2 == 0)
+        alert("VESZTETTÉL BAZZ+++")
+
+      setStrength(ujKard)
+
+      visszatesz(currentCard)
+      pick()
+    }
   }
 
   const flee = (card: Enemy) => {
+    if(!currentCard) return
     if (fleeList.length < 2){
       setFleeList(prev => [...prev, card])
       pick()
     }
+  }
+
+  const fleeToBattle = (card: Enemy) => {
+    if(!card) return
+    visszatesz(currentCard)
+    setCurrentCard(card)
+    setFleeList(fleeList.filter(c => c !== card))
   }
 
   return (
@@ -70,11 +134,15 @@ const App = () => {
         <div className='talon'>
           {fleeList.map(c => <Card {...c}/>)} 
         </div>
+        <button onClick={() => fleeList[0] ? fleeToBattle(fleeList[0]) : null}>➡️</button>
       </section>
       <section className='battleField'>
         {currentCard && <Card {...currentCard} />}
         <button id='dice'>
           🎲
+        </button>
+        <button className='fightBtn' onClick={() => fight()}>
+          Fight⚔️
         </button>
         <button id='fleeBtn' onClick={() => flee(currentCard)}>
           Flee👣
